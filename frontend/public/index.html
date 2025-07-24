@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnjoyDrive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="global.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Masters in Car Rental Experience</h1>
+                <p>Drive our cars and enjoy the ride and fly into your dreams.</p>
+                <div class="cta-buttons">
+                    <a href="#gallery" class="btn btn-primary">View Our Collection</a>
+                    <a href="#contact" class="btn btn-secondary">Book Now</a>
+                    <a href="/login" class="btn btn-secondary">Login to Book</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <i class="fas fa-car"></i>
+                <h3>Premium Vehicles</h3>
+                <p>Choose from our selection of luxury and sports cars.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Best Rates</h3>
+                <p>Competitive pricing with no hidden fees.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Our customer service team is always available.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Collection</h2>
+                <p>Explore our collection of premium vehicles</p>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="suv">SUV</button>
+            </div>
+            <div class="gallery-container">
+                <?php
+                $db_host = 'localhost';
+                $db_user = 'root';
+                $db_pass = '';
+                $db_name = 'crv_db';
+
+                $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $cars_sql = "SELECT * FROM cars ORDER BY created_at DESC";
+                $cars_result = $conn->query($cars_sql);
+
+                if ($cars_result && $cars_result->num_rows > 0) {
+                    while($car = $cars_result->fetch_assoc()) {
+                        ?>
+                        <div class="gallery-item <?php echo htmlspecialchars($car['category']); ?>">
+                            <img src="<?php echo htmlspecialchars($car['image']); ?>" alt="<?php echo htmlspecialchars($car['name']); ?>">
+                            <div class="gallery-item-info">
+                                <h3><?php echo htmlspecialchars($car['name']); ?></h3>
+                                <p>$<?php echo number_format($car['price_per_day'] * 2, 2); ?>/day</p>
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <a href="#contact" class="btn btn-sm">Book Now</a>
+                                <?php else: ?>
+                                    <a href="login.php" class="btn btn-sm btn-primary">Login to Book</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo '<div class="col-12 text-center"><p>No cars available at the moment.</p></div>';
+                }
+
+                $conn->close();
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Reviews</h2>
+                <p>What our customers say about their experience</p>
+            </div>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-box">
+                            <img src="https://res.cloudinary.com/dz7pl7mlf/image/upload/v1745251679/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr_ejkby9.jpg" class="testimonial-image" alt="James Wilson">
+                            <p class="lead">"Mercedes-Benz vehicles consistently receive positive reviews, particularly for their luxury interiors, stylish designs, and advanced technology features."</p>
+                            <h5>- James Wilson, Business Executive</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-box">
+                            <img src="https://res.cloudinary.com/dz7pl7mlf/image/upload/v1745251787/rsflbsvuxsexcdiw5vss.jpg" class="testimonial-image" alt="Michael Roberts">
+                            <p class="lead">"Toyota is best car according to the budget and comfort it gives nice mileage and is fully loaded with features Looks of the car is awesome 💯 merko bahut achi lgi car the pickup of the car is very nice performance of the ca"</p>
+                            <h5>-  Michael Roberts, Car Enthusiast</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-box">
+                            <img src="https://res.cloudinary.com/dz7pl7mlf/image/upload/v1745251929/yzpwprwge2msh67wmvzo.jpg" class="testimonial-image" alt="Sarah Chen">
+                            <p class="lead">"As a car enthusiast, I was blown away by their collection. The Ferrari 488 was perfectly maintained and the team's knowledge about the vehicles is impressive. Will definitely rent again!"</p>
+                            <h5>- Sarah Chen, Wedding Planner</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>For bookings and inquiries</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Visit Us</h3>
+                            <p>EnjoyDrive</p>
+                            <p>Benz Circle, vijayawada</p>
+                            <p>Andhra Pradesh, 522302</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Call Us</h3>
+                            <p>+91 0123456789</p>
+                            <p>Mon-Sat: 9:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <p>info@enjoydrive.com</p>
+                            <p>support@enjoydrive.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php if(isset($_SESSION['user_id'])): ?>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                    <div class="booking-form-card">
+                        <h3 class="text-center mb-4">Book a Car</h3>
+                        
+                        <?php if(isset($_SESSION['error'])): ?>
+                            <div class="alert alert-danger">
+                                <?php 
+                                echo $_SESSION['error']; 
+                                unset($_SESSION['error']);
+                                ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if(isset($_SESSION['success'])): ?>
+                            <div class="alert alert-success">
+                                <?php 
+                                echo $_SESSION['success']; 
+                                unset($_SESSION['success']);
+                                ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <form action="process-booking.php" method="POST" class="booking-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="car_id" class="form-label">Select Car</label>
+                                    <select class="form-select" id="car_id" name="car_id" required>
+                                        <option value="">Choose a car...</option>
+                                        <?php
+                                        $db_host = 'localhost';
+                                        $db_user = 'root';
+                                        $db_pass = '';
+                                        $db_name = 'crv_db';
+
+                                        $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+                                        if ($conn->connect_error) {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }
+
+                                        $cars_sql = "SELECT id, name, price_per_day FROM cars WHERE status = 'available' ORDER BY name";
+                                        $cars_result = $conn->query($cars_sql);
+
+                                        if ($cars_result && $cars_result->num_rows > 0) {
+                                            while($car = $cars_result->fetch_assoc()) {
+                                                echo '<option value="' . $car['id'] . '">' . htmlspecialchars($car['name']) . ' - $' . number_format($car['price_per_day'] * 2, 2) . '/day</option>';
+                                            }
+                                        }
+
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="pickup_date" class="form-label">Pickup Date</label>
+                                    <input type="date" class="form-control" id="pickup_date" name="pickup_date" required min="<?php echo date('Y-m-d'); ?>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="return_date" class="form-label">Return Date</label>
+                                    <input type="date" class="form-control" id="return_date" name="return_date" required min="<?php echo date('Y-m-d'); ?>">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Book Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php else: ?>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8 text-center">
+                    <div class="alert alert-info">
+                        <h4>Want to book a car?</h4>
+                        <p>Please login to make a booking.</p>
+                        <a href="login.php" class="btn btn-primary">Login Now</a>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Enjoy<span>Drive</span></h2>
+                    <p>Premium car rental services for those who appreciate luxury and performance.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Our Collection</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Enjoy<span style="color: #3498db;">Drive</span> All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
