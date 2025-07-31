@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroBanner from '../components/HeroBanner';
+import HeroBanner from '../components/HeroBanner'; // Make sure HeroBanner.tsx exports default
 import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
 import VehicleList from '../components/VehicleList';
