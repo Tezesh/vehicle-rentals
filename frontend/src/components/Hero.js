@@ -10,7 +10,17 @@ const Hero = () => (
         <h1 className="display-3 fw-bold mb-3">Masters in Car Rental Experience</h1>
         <p className="lead mb-4">Drive our cars and enjoy the ride and fly into your dreams.</p>
         <div className="d-flex gap-3">
-          <a href="#gallery" className="btn btn-primary btn-lg px-4">VIEW OUR COLLECTION</a>
+          <button
+            onClick={() => {
+              const element = document.getElementById('collection');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="btn btn-primary btn-lg px-4"
+          >
+            VIEW OUR COLLECTION
+          </button>
           <Link to="/login" className="btn btn-outline-light btn-lg px-4">LOGIN TO BOOK</Link>
         </div>
       </div>

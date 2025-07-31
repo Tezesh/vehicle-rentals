@@ -44,6 +44,7 @@ const Gallery = () => {
           <button className="filter-btn btn btn-outline-primary">Luxury</button>
           <button className="filter-btn btn btn-outline-primary">Sports</button>
           <button className="filter-btn btn btn-outline-primary">SUV</button>
+          <button className="filter-btn btn btn-outline-primary">Bikes</button>
         </div>
         <div className="gallery-container row g-4 justify-content-center">
           {loading && <div className="text-center">Loading...</div>}

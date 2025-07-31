@@ -1,50 +1,145 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HeroBanner from './components/HeroBanner';
+import VehicleList from './components/VehicleList';
 import Features from './components/Features';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
+import WhyChooseUs from './components/WhyChooseUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Testimonials from './components/Testimonials';
+
+// Import pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
+import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import AllBookings from './pages/AllBookings';
+import ManageVehicles from './pages/ManageVehicles';
+import ManageTestimonials from './pages/ManageTestimonials';
+import ManageUsers from './pages/ManageUsers';
 import VehicleDetail from './pages/VehicleDetail';
 import Book from './pages/Book';
-// Admin pages placeholders
-const AdminCars = () => <div className="p-4"><h2>Cars Management</h2><p>Feature to manage cars will be implemented here.</p></div>;
-const AdminUsers = () => <div className="p-4"><h2>Users Management</h2><p>Feature to manage users will be implemented here.</p></div>;
-const AdminBookings = () => <div className="p-4"><h2>All Bookings</h2><p>Feature to view all bookings will be implemented here.</p></div>;
-import './styles/global.css';
+import Profile from './pages/Profile';
+import UserBookings from './pages/UserBookings';
+import NotFound from './pages/NotFound';
 
+// Import layout components
+import AdminRoute from './components/layout/AdminRoute';
+
+import './styles/main.css';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <Gallery />
-      <Testimonials />
-      <Contact />
-      <Footer />
+    <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/book" element={<Book />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/cars" element={<AdminCars />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
-        <Route path="/admin/bookings" element={<AdminBookings />} />
-        <Route path="/vehicles/:id" element={<VehicleDetail />} />
+        {/* Public Routes */}
+        <Route path="/" element={
+          <>
+            <Navbar />
+            <HeroBanner />
+            <VehicleList />
+            <WhyChooseUs />
+            <Features />
+            <Testimonials />
+            <Contact />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/login" element={
+          <>
+            <Navbar />
+            <Login />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/register" element={
+          <>
+            <Navbar />
+            <Register />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        <Route path="/vehicles/:id" element={
+          <>
+            <Navbar />
+            <VehicleDetail />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/book/:id" element={
+          <>
+            <Navbar />
+            <Book />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/profile" element={
+          <>
+            <Navbar />
+            <Profile />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/bookings" element={
+          <>
+            <Navbar />
+            <UserBookings />
+            <Footer />
+          </>
+        } />
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        } />
+
+        <Route path="/admin/bookings" element={
+          <AdminRoute>
+            <AllBookings />
+          </AdminRoute>
+        } />
+
+        <Route path="/admin/cars" element={
+          <AdminRoute>
+            <ManageVehicles />
+          </AdminRoute>
+        } />
+
+        <Route path="/admin/testimonials" element={
+          <AdminRoute>
+            <ManageTestimonials />
+          </AdminRoute>
+        } />
+
+        <Route path="/admin/users" element={
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        } />
+
+        {/* 404 Route */}
+        <Route path="*" element={
+          <>
+            <Navbar />
+            <NotFound />
+            <Footer />
+          </>
+        } />
       </Routes>
-    </>
+    </div>
   );
 }
 
-export default App; 
+export default App;

@@ -2,12 +2,22 @@
   "name": "vehicle-rentals-backend",
   "version": "1.0.0",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node scripts/seedDatabase.js",
+    "seed-admin": "node scripts/seedAdmin.js",
+    "seed-testimonials": "node scripts/seedTestimonials.js",
+    "test-atlas": "node scripts/setupAtlas.js",
+    "setup": "node scripts/setupAtlas.js"
+  },
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.6.3",
-    "dotenv": "^16.3.1",
+    "axios": "^1.11.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "cors": "^2.8.5"
+    "mongoose": "^7.6.3"
   }
-} 
+}
