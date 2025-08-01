@@ -11,7 +11,7 @@ class MemoryDatabase {
         pricePerDay: 299,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs7l-Vbmjbcykl1kIQbvdC8qxBMO0JhVQYGQ&s',
         features: ['Massage Seats', 'Burmester Sound System', 'MBUX Infotainment', 'Active Body Control', 'Night Vision'],
         specifications: {
           engine: '3.0L V6 Turbo + EQBoost',
@@ -31,7 +31,7 @@ class MemoryDatabase {
         pricePerDay: 449,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/176129/m4-competition-exterior-left-front-three-quarter.jpeg?isig=0&q=80',
         features: ['M xDrive AWD', 'Carbon Fiber Roof', 'M Track Package', 'Harman Kardon Audio', 'Launch Control'],
         specifications: {
           engine: '3.0L Twin-Turbo I6 S58',
@@ -51,7 +51,7 @@ class MemoryDatabase {
         pricePerDay: 279,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQCorpXev0u8gHpA3dsSzc-Mc-0ZZNGt6WoQ&s',
         features: ['Terrain Response 2', 'ClearSight Rear View', 'Meridian Audio', 'Panoramic Roof', 'Wade Sensing'],
         specifications: {
           engine: '2.0L Turbo I4',
@@ -70,7 +70,7 @@ class MemoryDatabase {
         pricePerDay: 399,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Tesla_Model_S_%28Facelift_ab_04-2016%29_%28cropped%29.jpg/1200px-Tesla_Model_S_%28Facelift_ab_04-2016%29_%28cropped%29.jpg',
         features: ['Full Self-Driving', 'Supercharging Network', '17" Touchscreen', 'Premium Audio', 'Bioweapon Defense Mode'],
         specifications: {
           engine: 'Tri-Motor Electric (1020 HP)',
@@ -128,7 +128,7 @@ class MemoryDatabase {
         pricePerDay: 129,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWdp_LZ5RE8e9erVqMJqF2tlZayBQUj1X_HQ&s',
         features: ['Revolution X Engine', 'ABS Braking', 'LED Lighting', 'Low Seat Height', 'Michelin Tires'],
         specifications: {
           engine: '749cc Liquid-Cooled V-Twin',
@@ -148,7 +148,7 @@ class MemoryDatabase {
         pricePerDay: 199,
         year: 2024,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.motorcyclistonline.com/resizer/PbY3IYfgnTwpiqLNM5IQehDYwqQ=/arc-photo-octane/arc3-prod/public/QGLFMQ42ZFGBHEOCSGTXSECWPY.jpg',
         features: ['Crossplane Crankshaft', 'Öhlins Suspension', 'Carbon Fiber Bodywork', 'Launch Control', 'Slide Control'],
         specifications: {
           engine: '998cc Crossplane Inline-4',
@@ -187,7 +187,7 @@ class MemoryDatabase {
         pricePerDay: 199,
         year: 2023,
         status: 'available',
-        image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        image: 'https://imgd.aeplcdn.com/1280x720/n/cw/ec/1/versions/ducati-panigale-v4-2025-standard1741200111106.jpg?v=1741200111391',
         features: ['Desmosedici Stradale Engine', 'Cornering ABS', 'Wheelie Control', 'Race Mode'],
         specifications: {
           engine: '1103cc V4',
